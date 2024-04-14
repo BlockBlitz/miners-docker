@@ -53,7 +53,7 @@ jobs:
       uses: docker/build-push-action@v5.3.0
       with:
         build-args: |
-          RQ_VERSION=${{ needs.check_ver.outputs.release-ver }}
+          APOOL_VERSION=${{ needs.check_ver.outputs.release-ver }}
         context: ${{ env.DOCKER_CONTEXT }}
         push: true
         tags: |
