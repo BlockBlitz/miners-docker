@@ -9,6 +9,7 @@ env:
   REGISTRY: ghcr.io
   ORG_NAME: blockblitz
   IMAGE_NAME: rqiner
+  DOCKER_CONTEXT: ./rqiner-docker/.
 
 jobs:
   check_ver:
@@ -53,7 +54,7 @@ jobs:
       with:
         build-args: |
           RQ_VERSION=${{ needs.check_ver.outputs.release-ver }}
-        context: ./rqiner-docker/.
+        context: ${{ env.DOCKER_CONTEXT }}
         push: true
         tags: |
           ${{ env.REGISTRY }}/${{ env.ORG_NAME }}/${{ env.IMAGE_NAME }}:{{ needs.check_ver.outputs.release-ver }}
