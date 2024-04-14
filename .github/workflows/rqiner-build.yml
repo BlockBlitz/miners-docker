@@ -1,6 +1,7 @@
 name: Build Rqiner
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: "0 * * * *"
 
