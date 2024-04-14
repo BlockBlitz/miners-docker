@@ -1,0 +1,15 @@
+services:
+  rqiner-zulda:
+    image: ghcr.io/blockblitz/rqiner-zluda:latest
+    container_name: rqiner-zluda
+    restart: unless-stopped
+    group_add:
+      - 985 # video
+    security_opt:
+      - seccomp=unconfined
+    devices:
+      - /dev/kfd
+      - /dev/dri
+    environment: 
+      WALLET_ADDRESS: my-wallet
+      WORKER_NAME: my-worker

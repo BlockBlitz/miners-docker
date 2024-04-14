@@ -1,0 +1,8 @@
+services:
+  apoolminer:
+    image: ghcr.io/blockblitz/apoolminer:latest
+    container_name: apoolminer
+    restart: unless-stopped
+    environment: 
+      ACCOUNT_NAME: my-account
+      WORKER_NAME: my-worker

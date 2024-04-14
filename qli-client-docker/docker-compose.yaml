@@ -1,0 +1,18 @@
+services:
+  qli-cuda:
+    image: ghcr.io/blockblitz/qli-client:latest
+    restart: unless-stopped
+    # GPU Mining Block - Remove if GPU mining is not required.
+    group_add:
+      - 985 # video
+    security_opt:
+      - seccomp=unconfined
+    devices:
+      - /dev/kfd
+      - /dev/dri
+    # End GPU Mining Block
+    environment: 
+      THREAD_COUNT: my-thread-count 
+      ACCESS_TOKEN: my-access-token 
+      WORKER_NAME: my-worker-name
+      USE_GPU: true
