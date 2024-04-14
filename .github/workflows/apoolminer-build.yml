@@ -9,7 +9,7 @@ env:
   REGISTRY: ghcr.io
   ORG_NAME: blockblitz
   IMAGE_NAME: apoolminer
-  DOCKER_CONTEXT: ./apoolminer-docker/.
+  DOCKER_CONTEXT: ./apoolminer/.
 
 jobs:
   check_ver:

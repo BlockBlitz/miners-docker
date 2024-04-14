@@ -9,7 +9,7 @@ env:
   REGISTRY: ghcr.io
   ORG_NAME: blockblitz
   IMAGE_NAME: rqiner
-  DOCKER_CONTEXT: ./rqiner-docker/.
+  DOCKER_CONTEXT: ./rqiner/.
 
 jobs:
   check_ver:
