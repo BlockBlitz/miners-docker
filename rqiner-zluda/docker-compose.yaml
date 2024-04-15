@@ -1,5 +1,5 @@
 services:
-  rqiner-zulda:
+  rqiner-zluda:
     image: ghcr.io/blockblitz/rqiner-zluda:latest
     container_name: rqiner-zluda
     restart: unless-stopped
