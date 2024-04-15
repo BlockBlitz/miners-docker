@@ -9,6 +9,7 @@ settings=$(jq -nc --arg amountOfThreads $THREAD_COUNT \
                  --arg accessToken $ACCESS_TOKEN \
                  --arg alias $WORKER_NAME \
                  --argjson allowHwInfoCollect true \
+                 --argjson autoupdateEnabled true \
 	         --argjson overwrites "$overwrites" \
 	         '$ARGS.named'
          )
