@@ -46,7 +46,7 @@ jobs:
       packages: write
     needs:
       - check_ver
-    if: needs.check_ver.outputs.image_exists == 'not found'
+    if: contains('not found', needs.check_ver.outputs.image_exists)
     steps:
     - name: Checkout
       uses: actions/checkout@v4
