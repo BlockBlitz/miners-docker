@@ -9,7 +9,7 @@ env:
   REGISTRY: ghcr.io
   ORG_NAME: blockblitz
   IMAGE_NAME: rqiner-zluda
-  DOCKER_CONTEXT: ./rqiner-zluda/.
+  DOCKER_CONTEXT: "{{defaultContext}}:rqiner-zluda"
 
 jobs:
   check_ver:
