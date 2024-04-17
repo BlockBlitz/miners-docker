@@ -14,7 +14,7 @@ env:
 jobs:
   check_ver:
     name: Check Release is Built
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
     - id: lastrelease 
       name: Get Latest Release
@@ -34,7 +34,7 @@ jobs:
       release-ver: ${{ steps.lastrelease.outputs.release }}
   build:
     name: Build Release
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     permissions:
       contents: read
       packages: write
