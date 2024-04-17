@@ -9,7 +9,7 @@ env:
   REGISTRY: ghcr.io
   ORG_NAME: blockblitz
   IMAGE_NAME: rqiner
-  DOCKER_CONTEXT: ./rqiner/.
+  CONTEXT: "{{defaultContext}}:rqiner"
 
 jobs:
   check_ver:
@@ -21,6 +21,7 @@ jobs:
       uses: pozetroninc/github-action-get-latest-release@v0.7.0
       with:
         repository: Qubic-Solutions/rqiner-builds
+        token: ${{ secrets.GITHUB_TOKEN }}
     - id: releaseexists
       name: Check Package Builds
       uses: tyriis/docker-image-tag-exists@49cd47e11a5fb368696d68284ca7fecce53fcc43
@@ -39,7 +40,7 @@ jobs:
       packages: write
     needs:
       - check_ver
-    if: needs.check_ver.outputs.image_exists == 'not found'
+    if: contains('not found', needs.check_ver.outputs.image_exists)
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -53,11 +54,11 @@ jobs:
       uses: docker/build-push-action@v5.3.0
       with:
         build-args: |
-          APOOL_VERSION=${{ needs.check_ver.outputs.release-ver }}
-        context: ${{ env.DOCKER_CONTEXT }}
+          RQ_VERSION=${{ needs.check_ver.outputs.release-ver }}
+        context: ${{ env.CONTEXT }}
         push: true
         tags: |
-          ${{ env.REGISTRY }}/${{ env.ORG_NAME }}/${{ env.IMAGE_NAME }}:{{ needs.check_ver.outputs.release-ver }}
+          ${{ env.REGISTRY }}/${{ env.ORG_NAME }}/${{ env.IMAGE_NAME }}:${{ needs.check_ver.outputs.release-ver }}
           ${{ env.REGISTRY }}/${{ env.ORG_NAME }}/${{ env.IMAGE_NAME }}:latest
           
     
