@@ -9,7 +9,7 @@ env:
   REGISTRY: ghcr.io
   ORG_NAME: blockblitz
   IMAGE_NAME: rqiner-zluda
-  DOCKER_CONTEXT: "{{defaultContext}}:rqiner-zluda"
+  CONTEXT: "{{defaultContext}}:rqiner-zluda"
 
 jobs:
   check_ver:
@@ -55,7 +55,7 @@ jobs:
       with:
         build-args: |
           APOOL_VERSION=${{ needs.check_ver.outputs.release-ver }}
-        context: ${{ env.DOCKER_CONTEXT }}
+        context: ${{ env.CONTEXT }}
         push: true
         tags: |
           ${{ env.REGISTRY }}/${{ env.ORG_NAME }}/${{ env.IMAGE_NAME }}:{{ needs.check_ver.outputs.release-ver }}
