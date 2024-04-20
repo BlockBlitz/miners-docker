@@ -1,0 +1,9 @@
+services:
+  qubic-ninja:
+    image: ghcr.io/blockblitz/qubic-ninja:latest
+    container_name: qubic-ninja
+    restart: unless-stopped
+    environment: 
+      NUM_THREADS: my-threads
+      WALLET_ADDRESS: my-wallet
+      WORKER_NAME: my-worker
