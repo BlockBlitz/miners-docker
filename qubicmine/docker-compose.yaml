@@ -1,0 +1,19 @@
+services:
+  qubicmine:
+    image: ghcr.io/blockblitz/qubicmine:latest
+    restart: unless-stopped
+    privileged: true
+    # GPU Mining Block - Remove if GPU mining is not required.
+    group_add:
+      - 985 # video
+    security_opt:
+      - seccomp=unconfined
+    devices:
+      - /dev/kfd
+      - /dev/dri
+    # End GPU Mining Block
+    environment: 
+      NUM_THREADS: my-thread-count 
+      WALLET_ADDRESS: my-wallet
+      WORKER_NAME: my-worker-name
+      USE_GPU: true
