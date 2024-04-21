@@ -1,6 +1,7 @@
 services:
   qubicmine:
     image: ghcr.io/blockblitz/qubicmine:latest
+    container_name: qubicmine
     restart: unless-stopped
     privileged: true
     # GPU Mining Block - Remove if GPU mining is not required.
