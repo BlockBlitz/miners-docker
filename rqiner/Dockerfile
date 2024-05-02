@@ -10,7 +10,6 @@ WORKDIR /rqminer
 COPY run.sh .
 
 RUN wget https://github.com/Qubic-Solutions/rqiner-builds/releases/download/$RQ_VERSION/rqiner-x86-broadwell
-RUN wget https://github.com/Qubic-Solutions/rqiner-builds/releases/download/$RQ_VERSION/rqiner-x86-haswell
 RUN wget https://github.com/Qubic-Solutions/rqiner-builds/releases/download/$RQ_VERSION/rqiner-x86-ivybridge
 RUN wget https://github.com/Qubic-Solutions/rqiner-builds/releases/download/$RQ_VERSION/rqiner-x86-znver2
 RUN wget https://github.com/Qubic-Solutions/rqiner-builds/releases/download/$RQ_VERSION/rqiner-x86-znver3
