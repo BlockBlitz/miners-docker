@@ -24,11 +24,10 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
     - id: releaseexists
       name: Check Package Builds
-      uses: cloudposse/github-action-docker-image-exists@main
+      uses: tyriis/docker-image-tag-exists@49cd47e11a5fb368696d68284ca7fecce53fcc43
       with:
         registry: ${{ env.REGISTRY }}
-        organization: ${{ env.ORG_NAME }}
-        repository: ${{ env.IMAGE_NAME }}
+        repository: ${{ env.ORG_NAME }}/${{ env.IMAGE_NAME }}
         tag: ${{ steps.lastrelease.outputs.release }}
     outputs:
       image-exists: ${{ steps.releaseexists.outputs.tag }}
@@ -41,7 +40,7 @@ jobs:
       packages: write
     needs:
       - check_ver
-    if: contains(needs.check_ver.outputs.result , 'failure')
+    if: contains(needs.check_ver.outputs.image-exists, 'not found')
     steps:
     - name: Checkout
       uses: actions/checkout@v4
